@@ -24,3 +24,7 @@ exports.play = function(req, res) {
   tv.control.media.play();
   res.json({ message: 'Played' });
 };
+
+exports.test = function(req, res) {
+  res.json({ message: 'Played' });
+};

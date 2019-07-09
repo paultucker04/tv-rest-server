@@ -11,4 +11,7 @@ module.exports = function(app) {
   app.route('/tv/play')
     .post(tvController.play);
 
+  app.route('/tv/test')
+    .get(tvController.test);
+
 };
