@@ -1,0 +1,20 @@
+{
+  "name": "tvrestserver",
+  "version": "1.0.0",
+  "description": "REST api for tv server",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon server.js"
+  },
+  "author": "paul tucker",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.6.2",
+    "vizio-smart-cast": "^1.3.0"
+  }
+}
