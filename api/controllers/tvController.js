@@ -1,7 +1,7 @@
 'use strict';
 
 let smartcast = require('vizio-smart-cast');
-let tv = new smartcast('192.168.1.228', 'Zw49i3hrlv');
+let tv = new smartcast('192.168.1.228', 'Zevwov0nxx');
 
 exports.power_on = function(req, res) {
   tv.control.power.on();
