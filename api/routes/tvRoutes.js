@@ -14,4 +14,13 @@ module.exports = function(app) {
   app.route('/tv/test')
     .get(tvController.test);
 
+  app.route('/')
+    .get(tvController.test1);
+
+  app.route('/tv/pair/init')
+    .post(tvController.initiate_pairing);
+
+  app.route('/tv/pair')
+    .post(tvController.pair);
+
 };
