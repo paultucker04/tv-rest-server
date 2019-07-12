@@ -23,4 +23,19 @@ module.exports = function(app) {
   app.route('/tv/pair')
     .post(tvController.pair);
 
+  app.route('/tv/pair/auth')
+    .post(tvController.set_auth);
+  
+  app.route('/tv/input/list')
+    .get(tvController.list_inputs);
+
+  app.route('/tv/input/current')
+    .get(tvController.current_input);
+
+  app.route('/tv/input/set/tv')
+    .post(tvController.set_input_tv);
+
+  app.route('/tv/magic/abc')
+    .post(tvController.magic_abc)
+
 };

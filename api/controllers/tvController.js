@@ -1,15 +1,23 @@
 'use strict';
 
-// let ip = '209.18.47.61:3456';
-
 let ip = '184.91.158.102:3456'
+// let ip = '192.168.1.228'
 
 let smartcast = require('vizio-smart-cast');
 let tv = new smartcast(ip);
 
-exports.initiate_pairing = function (req, res) {
-  tv.pairing.initiate();
+exports.set_auth = function (req, res) {
+  tv.pairing.useAuthToken(req.body.auth);
   res.json({ success: true });
+}
+
+exports.initiate_pairing = function (req, res) {
+  tv.pairing.initiate()
+    .catch(err => {
+      console.log(err);
+      res.json({ success: false });
+    });
+    res.json({ success: true });
 };
 
 exports.pair = function (req, res) {
@@ -58,6 +66,43 @@ exports.play = function(req, res) {
   tv.control.media.play();
   res.json({ message: 'Played' });
 };
+
+exports.list_inputs = function(req, res) {
+  tv.input.list()
+    .then(data => {
+      console.log(data);
+      res.json({data: data});
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+exports.current_input = function(req, res) {
+  tv.input.current().then(data => {
+    console.log(data.ITEMS[0].VALUE);
+    res.json(data.ITEMS[0].VALUE);
+  })
+}
+
+exports.set_input_tv = function(req, res) {
+  tv.input.set("TV");
+  res.json('success');
+}
+
+exports.magic_abc = function(req, res) {
+  
+  tv.control.power.on()
+    .then(data => {  
+      tv.input.set("TV");
+      res.json('succes');
+    })
+    .catch(err => {
+      console.log(err);
+      res.json('error');
+    });
+
+}
 
 exports.test = function(req, res) {
   res.json({ message: 'Played' });
